@@ -9,10 +9,10 @@ from yowsup.common.tools import MimeTools
 logger = logging.getLogger(__name__)
 
 class MediaUploader(WARequest, threading.Thread):
-    def __init__(self, jid, accountJid, sourcePath, uploadUrl, resumeOffset = 0, successClbk = None, errorClbk = None, progressCallback = None, async = True):
+    def __init__(self, jid, accountJid, sourcePath, uploadUrl, resumeOffset = 0, successClbk = None, errorClbk = None, progressCallback = None, async_= True):
         WARequest.__init__(self)
 
-        self.async = async
+        self.async_= async_
         self.jid = jid
         self.accountJid = accountJid
         self.sourcePath = sourcePath
@@ -30,7 +30,7 @@ class MediaUploader(WARequest, threading.Thread):
         self.sock = socket.socket()
 
     def start(self):
-        if self.async:
+        if self.async_:
             threading.Thread.__init__(self)
             super(MediaUploader, self).start()
         else:
